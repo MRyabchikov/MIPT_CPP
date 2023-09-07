@@ -12,7 +12,6 @@
 /*.pytxcode
 _minted-*/
 pythontex-files-*/
-bin/
 
 *.pdf
 !images/*.pdf

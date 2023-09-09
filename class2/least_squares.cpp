@@ -1,4 +1,5 @@
 #include <cmath>
+#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -7,13 +8,22 @@ using namespace std;
 struct Point
 {
   double x, y;
+
+  Point(double xx = 0.0, double yy = 0.0) : x(xx), y(yy) {}
 };
+
+istream& operator>> (istream& is, Point& p)
+{
+  is >> p.x >> p.y;
+  return is;
+}
 
 int main (void)
 {
+  ifstream fin("class2/input.txt");
   Point p;
   vector<Point> v;
-  while (cin >> p.x >> p.y)
+  while (fin >> p)
     v.push_back(p);
   double average_y = 0.0, average_x = 0.0, average_xy = 0.0,
          average_x_square = 0.0;

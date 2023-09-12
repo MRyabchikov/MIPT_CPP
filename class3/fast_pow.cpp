@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -33,14 +34,26 @@ double fast_pow (double x, int n)
     return x * fast_pow(x, n - 1);
 }
 
+using pow_func = double (*)(double, int);
+
+void test_pow (double x, double eps, pow_func our_pow)
+{
+    bool flag = true;  //
+    for (int n = -5; n <= 5; n++)
+    {
+        if (abs(our_pow(x, n) - pow(x, n)) > eps)
+        {
+            cout << "Test mistake with x = " << x << ", n = " << n << endl;
+            flag = false;
+        }
+    }
+    if (flag)
+        cout << "Everything is right" << endl;
+}
+
 int main (void)
 {
-    cout << slow_pow(7, 0) << endl;
-    cout << slow_pow(5, 3) << endl;
-    cout << slow_pow(2, -1) << endl;
-    cout << fast_pow(2, 10) << endl;
-    cout << fast_pow(5, 4) << endl;
-    cout << fast_pow(2, -2) << endl;
-    cout << fast_pow(0, -1) << endl;
+    test_pow(5, 0.001, fast_pow);
+    test_pow(5, 0.001, slow_pow);
     return 0;
 }

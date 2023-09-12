@@ -53,7 +53,7 @@ void test_pow (double x, double eps, pow_func our_pow)
 
 int main (void)
 {
-    test_pow(5, 0.001, fast_pow);
-    test_pow(5, 0.001, slow_pow);
+    test_pow(5, pow(10, -15), fast_pow);
+    test_pow(5, pow(10, -15), slow_pow);
     return 0;
 }

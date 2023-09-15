@@ -13,6 +13,6 @@
 _minted-*/
 pythontex-files-*/
 /bin
-
+compiling_settings template
 *.pdf
 !images/*.pdf

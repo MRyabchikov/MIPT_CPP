@@ -3,6 +3,7 @@
     "editor.fontLigatures": false,
     "editor.formatOnSave": true,
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "stdexcept": "cpp"
     }
 }

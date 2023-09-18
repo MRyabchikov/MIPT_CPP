@@ -19,8 +19,9 @@
 */
 
 #include <iostream>
+using namespace std;
 
-lass Token
+class Token
 {
   public:
     char kind;     /// what kind of token
@@ -51,13 +52,13 @@ Token_stream::Token_stream() : buffer{0}  /// no Token in buffer
 void Token_stream::putback(Token t)
 {
     if (full)
-        error("putback() into a full buffer");
+        throw runtime_error("putback() into a full buffer");
 
     buffer = t;
     full = true;
 }
 
-Token get ()
+Token Token_stream::get()
 {
     if (full)  // do we already have a Token ready?
     {
@@ -89,6 +90,7 @@ Token get ()
     case '5':
     case '6':
     case '7':
+    case '8':
     case '9':
     {
         cin.putback(ch);  // put digit back into the input stream
@@ -98,7 +100,7 @@ Token get ()
     }
 
     default:
-        error("Bad token");
+        runtime_error("Bad token");
     }
 }
 
@@ -117,15 +119,15 @@ double primary ()
         double d = expression();
         t = ts.get();
         if (t.kind != ')')
-      error("')' expected);
-    return d;
+            runtime_error("')' expected");
+        return d;
     }
 
     case '8':  // we use '8' to represent a number
         return t.value;
 
     default:
-        error("primary expected");
+        runtime_error("primary expected");
     }
 }
 
@@ -140,22 +142,23 @@ double term ()
         switch (t.kind)
         {
         case '*':
-      left *= primary();
-      t = ts.get();
+            left *= primary();
+            t = ts.get();
+            break;
 
         case '/':
         {
-      double d = primary();
-      if (d == 0)
-          error("divide by zero");
-      left /= d;
-      t = ts.get();
-      break;
+            double d = primary();
+            if (d == 0)
+                runtime_error("divide by zero");
+            left /= d;
+            t = ts.get();
+            break;
         }
 
         default:
-      ts.putback(t);  // put t back into the token stream
-      return left;
+            ts.putback(t);  // put t back into the token stream
+            return left;
         }
     }
 }
@@ -163,11 +166,11 @@ double term ()
 /// deal with + and -
 double expression ()
 {
-  double left = term(;  // read and evaluate a Term
-  Token t = ts.get();    // get the next token from token stream
+    double left = term();  // read and evaluate a Term
+    Token t = ts.get();    // get the next token from token stream
 
-  while (true)
-  {
+    while (true)
+    {
         switch (t.kind)
         {
         case '+':
@@ -176,7 +179,7 @@ double expression ()
             break;
 
         case '-':
-            left += term();  // evaluate Term and subtract
+            left -= term();  // evaluate Term and subtract
             t = ts.get();
             break;
 
@@ -184,33 +187,34 @@ double expression ()
             ts.putback(t);  // put t back into the token stream
             return left;    // finally: no more + or -: return the answer
         }
-  }
+    }
 }
 
 int main ()
 try
 {
-  while (cin)
-  {
-      Token t = ts.get();
+    double val = 0.0;
+    while (cin)
+    {
+        Token t = ts.get();
 
-      if (t.kind == 'q')
-      break;              // 'q' for quit
-      if (t.kind == ';')  // ';' for "print now"
-      cout << "=" << val << '\n';
-      else
-      ts.putback(t);
+        if (t.kind == 'q')
+            break;          // 'q' for quit
+        if (t.kind == ';')  // ';' for "print now"
+            cout << "=" << val << '\n';
+        else
+            ts.putback(t);
 
-      val = expression();
-  }
+        val = expression();
+    }
 }
 catch (exception& e)
 {
-  cerr << "error: " << e.what() << '\n';
-  return 1;
+    cerr << "error: " << e.what() << '\n';
+    return 1;
 }
 catch (...)
 {
-  cerr << "Oops: unknown exception!\n";
-  return 2;
+    cerr << "Oops: unknown exception!\n";
+    return 2;
 }

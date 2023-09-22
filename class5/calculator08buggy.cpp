@@ -69,6 +69,8 @@ Token Token_stream::get()
 
     switch (ch)
     {
+    case quit:
+        return Token{quit};
     case '(':
     case ')':
     case '+':
@@ -104,7 +106,7 @@ Token Token_stream::get()
             string s;
             s += ch;
             while (cin.get(ch) && (isalpha(ch) || isdigit(ch)))
-                s = ch;
+                s += ch;
             cin.putback(ch);
 
             if (s == declkey)
@@ -198,8 +200,8 @@ double primary ()
         t = ts.get();
         if (t.kind != ')')
             runtime_error("'(' expected");
+        return d;
     }
-    break;
 
     case '-':
         return -primary();
@@ -213,6 +215,7 @@ double primary ()
         return get_value(t.name);
 
     default:
+
         runtime_error("primary expected");
     }
 }
@@ -319,7 +322,7 @@ void calculate ()
             ts.putback(t);
             cout << result << statement() << endl;
         }
-        catch (runtime_error& e)
+        catch (exception& e)
         {
             cerr << e.what() << endl;
             clean_up_mess();

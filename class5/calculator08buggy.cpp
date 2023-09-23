@@ -6,6 +6,7 @@
   We have inserted 3 bugs that the compiler will catch and 3 that it won't.
 */
 
+#include <cmath>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -40,7 +41,7 @@ class Token_stream
 void Token_stream::putback(Token t)
 {
     if (full)
-        runtime_error("putback() into a full buffer");
+        throw runtime_error("putback() into a full buffer");
 
     buffer = t;
     full = true;
@@ -114,7 +115,7 @@ Token Token_stream::get()
 
             return Token{name, s};
         }
-        runtime_error("Bad token");
+        throw runtime_error("Bad token");
     }
 }
 
@@ -149,7 +150,7 @@ double get_value (string s)
         if (var_table[i].name == s)
             return var_table[i].value;
 
-    runtime_error("get: undefined name " + s);
+    throw runtime_error("get: undefined name " + s);
 }
 
 void set_value (string s, double d)
@@ -163,7 +164,7 @@ void set_value (string s, double d)
         }
     }
 
-    runtime_error("set: undefined name " + s);
+    throw runtime_error("set: undefined name " + s);
 }
 
 bool is_declared (string s)
@@ -178,7 +179,7 @@ bool is_declared (string s)
 double define_name (string var, double val)
 {
     if (is_declared(var))
-        runtime_error(var + " declared twice");
+        throw runtime_error(var + " declared twice");
 
     var_table.push_back(Variable{var, val});
 
@@ -199,7 +200,7 @@ double primary ()
         double d = expression();
         t = ts.get();
         if (t.kind != ')')
-            runtime_error("'(' expected");
+            throw runtime_error("'(' expected");
         return d;
     }
 
@@ -216,7 +217,7 @@ double primary ()
 
     default:
 
-        runtime_error("primary expected");
+        throw runtime_error("primary expected");
     }
 }
 
@@ -238,8 +239,16 @@ double term ()
         {
             double d = primary();
             if (d == 0)
-                runtime_error("divide by zero");
+                throw runtime_error("divide by zero");
             left /= d;
+            break;
+        }
+        case '%':
+        {
+            double d = primary();
+            if (d == 0)
+                throw runtime_error("divide by zero");
+            left = fmod(left, d);
             break;
         }
 
@@ -279,15 +288,14 @@ double declaration ()
 {
     Token t = ts.get();
     if (t.kind != name)
-        runtime_error("name expected in declaration");
+        throw runtime_error("name expected in declaration");
 
     string var = t.name;
     if (is_declared(var))
-        runtime_error(var + " declared twice");
-
+        throw runtime_error(var + " declared twice");
     t = ts.get();
     if (t.kind != '=')
-        runtime_error("'=' missing in declaration of " + var);
+        throw runtime_error("'=' missing in declaration of " + var);
 
     return define_name(var, expression());
 }
@@ -322,7 +330,7 @@ void calculate ()
             ts.putback(t);
             cout << result << statement() << endl;
         }
-        catch (exception& e)
+        catch (runtime_error& e)
         {
             cerr << e.what() << endl;
             clean_up_mess();

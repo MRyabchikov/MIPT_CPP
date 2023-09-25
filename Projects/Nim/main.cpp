@@ -3,37 +3,13 @@
 #include <vector>
 using namespace std;
 
-void print_greetings (void)
-{
-    cout << "\t\t\tWelcome to game Nim!\n";
-    cout << "Available commands:\n";
-    cout << "s - Start game\n";
-    cout << "r - Print rules\n";
-    cout << "q - Exit game\n";
-    cout << "Enter command:\n>";
-}
+vector<int> heaps_data{3, 4, 5};
 
-void print_rules (void)
+vector<int> init_field (const vector<int>& heaps_data)
 {
-    cout << "\t\t\tNim game rules:\n";
-    cout << "- Num is a turn-based game\n";
-    cout << "- Game statement is defined by several rows and ammount of "
-            "stones in it\n";
-    cout << "- At every turn you(or your opponent) must take N stones from "
-            "only one row\n";
-    cout
-        << "- N is a natural number in section [1; K] where K - ammount of "
-           "stones in target row\n";
-    cout << "- The person who took the last stone is a winner\n";
-    cout
-        << "- You should enter your turn in format L M where L - number of "
-           "a row, M - ammount of stones you take\n";
-    cout << "- You may quit the game at every moment by entering 0 0 \n";
-}
-
-vector<int> init_field ()
-{
-    vector<int> field{3, 4, 5};
+    vector<int> field;
+    for (int i = 0; i < static_cast<int>(heaps_data.size()); i++)
+        field.push_back(heaps_data[i]);
     return field;
 }
 
@@ -77,7 +53,7 @@ void print_game_condition (const vector<int>& field, int current_turn)
     for (int i = 0; i < static_cast<int>(field.size()); i++)
     {
         print_n_char('*', field[i]);
-        printf("    (%d stones)\n", field[i]);
+        printf("    (%d field, %d stones)\n", i + 1, field[i]);
     }
 }
 
@@ -145,9 +121,9 @@ void handle_bot_turn (vector<int>& field)
             }
 }
 
-void game ()
+void game (const vector<int>& heaps_data)
 {
-    vector<int> field = init_field();
+    vector<int> field = init_field(heaps_data);
     int current_turn = rand() % 2 ? player_turn : bot_turn;
     while (!game_is_end(field))
     {
@@ -171,26 +147,98 @@ void game ()
     return;
 }
 
+const char start_command = 's';
+const char exit_command = 'q';
+const char rules_command = 'r';
+const char settings_command = 'c';
+
+void print_menu (void)
+{
+    cout << "Available commands:\n";
+    cout << start_command << " - Start game\n";
+    cout << rules_command << " - Print rules\n";
+    cout << exit_command << " - Exit game\n";
+    // cout << settings_command << " - Change game settings\n"
+    cout << "Enter command:\n>";
+}
+
+void print_rules (void)
+{
+    cout << "\t\t\tNim game rules:\n";
+    cout << "- Num is a turn-based game\n";
+    cout << "- Game statement is defined by several rows and ammount of "
+            "stones in it\n";
+    cout << "- At every turn you(or your opponent) must take N stones from "
+            "only one row\n";
+    cout
+        << "- N is a natural number in section [1; K] where K - ammount of "
+           "stones in target row\n";
+    cout << "- The person who took the last stone is a winner\n";
+    cout
+        << "- You should enter your turn in format L M where L - number of "
+           "a row, M - ammount of stones you take\n";
+    cout << "- You may quit the game at every moment by entering 0 0\n";
+}
+
+// void print_current_settings (const vector<int> heaps_data)
+// {
+//     cout << "Current stones distrubution: \n";
+//     for (int i = 0; i < heaps_data.size(); i++)
+//         cout << "Heap " << i << ": " << heaps_data[i] << "\n";
+// }
+
+// void clear_heaps_data (vector<int> heaps_data)
+// {
+//     while (heaps_data.size())
+//         heaps_data.pop_back();
+// }
+
+// void change_settings_mode (vector<int>& heaps_data)
+// {
+//     print_current_settings(heaps_data);
+//     clear_heaps_data(heaps_data);
+//     while (true)
+//     {
+//         cout << "Enter ammount of heaps: ";
+//         int heaps_ammount = 0;
+//         cin >> heaps_ammount;
+//         if (cin)
+//         {
+//             for (int i = 0; i < heaps_ammount; i++){
+
+//             }
+//         }
+//     }
+// }
+
 int main (void)
 {
     srand(time(NULL));
-    print_greetings();
-    char command;
-    cin >> command;
-    switch (command)
+    cout << "\t\t\tWelcome to game Nim!\n";
+    while (true)
     {
-    case 's':
-        game();
-        break;
-    case 'q':
-        cout << "Bye bye\n";
-        return 0;
-    case 'r':
-        print_rules();
-        break;
-    default:
-        cout << "Unknown command!";
-        return 1;
+        print_menu();
+        char command;
+        cin >> command;
+        switch (command)
+        {
+        case start_command:
+            game(heaps_data);
+            break;
+        case exit_command:
+            cout << "Bye bye\n";
+            return 0;
+        case rules_command:
+            print_rules();
+            break;
+            // case settings_command:
+            //     change_settings_mode();
+
+        default:
+            cout << "Unknown command! Try again\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
     }
     return 0;
 }

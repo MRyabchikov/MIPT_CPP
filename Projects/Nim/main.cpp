@@ -1,3 +1,4 @@
+#include <ctime>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -61,9 +62,18 @@ void print_n_char (char c, int n)
         cout << c;
 }
 
-void print_field_condition (const vector<int>& field)
+void print_turn_condition (int current_turn)
+{
+    if (current_turn == player_turn)
+        cout << "Your turn\n";
+    else
+        cout << "Machine turn\n";
+}
+
+void print_game_condition (const vector<int>& field, int current_turn)
 {
     cout << "\t\t\tCurrent field condition: \n";
+    print_turn_condition(current_turn);
     for (int i = 0; i < static_cast<int>(field.size()); i++)
     {
         print_n_char('*', field[i]);
@@ -109,8 +119,13 @@ int calculate_nim_sum (const vector<int>& field)
 
 void make_random_turn (vector<int>& field)
 {
-    int row = rand() % field.size();
-    int ammount = rand() % field[row];
+    int row, ammount;
+    do
+    {
+        row = rand() % field.size();
+        ammount = rand() % (field[row] + 1);
+    }
+    while (!is_valid_value(field, row + 1, ammount));
     field[row] -= ammount;
 }
 
@@ -120,7 +135,7 @@ void handle_bot_turn (vector<int>& field)
         make_random_turn(field);
     else
         for (int i = 0; i < static_cast<int>(field.size()); i++)
-            for (int j = 1; j < field[i]; j++)
+            for (int j = 1; j <= field[i]; j++)
             {
                 field[i] -= j;
                 if (calculate_nim_sum(field) == 0)
@@ -136,7 +151,7 @@ void game ()
     int current_turn = rand() % 2 ? player_turn : bot_turn;
     while (!game_is_end(field))
     {
-        print_field_condition(field);
+        print_game_condition(field, current_turn);
         if (current_turn == player_turn)
         {
             if (handle_player_turn(field) == 0)
@@ -144,9 +159,9 @@ void game ()
                 cout << "Game over with your capitulation\n";
                 return;
             }
-            else
-                handle_bot_turn(field);
         }
+        else
+            handle_bot_turn(field);
         change_turn(current_turn);
     }
     if (current_turn == bot_turn)
@@ -158,6 +173,7 @@ void game ()
 
 int main (void)
 {
+    srand(time(NULL));
     print_greetings();
     char command;
     cin >> command;

@@ -1,18 +1,4 @@
-*.aux
-/*.fdb_latexmk
-/*.log
-/*.fls
-/*.out
-/*.run.xml
-/*.toc
-/*.bbl
-/*.bcf
-/*.blg
-/*.synctex.gz
-/*.pytxcode
-_minted-*/
-pythontex-files-*/
-/bin
+bin/
+build/
 compiling_settings template
 *.pdf
-!images/*.pdf

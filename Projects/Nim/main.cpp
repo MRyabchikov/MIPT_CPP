@@ -38,7 +38,7 @@ void print_n_char (char c, int n)
         cout << c;
 }
 
-void print_turn_condition (int current_turn)
+void print_turn_state (int current_turn)  // FIXME: rename, use state
 {
     if (current_turn == player_turn)
         cout << "Your turn\n";
@@ -46,21 +46,20 @@ void print_turn_condition (int current_turn)
         cout << "Machine turn\n";
 }
 
-void print_game_condition (const vector<int>& field, int current_turn)
+void print_game_state (const vector<int>& field, int current_turn)  // FIXME: rename, use state
 {
     cout << "\t\t\tCurrent field condition: \n";
-    print_turn_condition(current_turn);
+    print_turn_state(current_turn);
     for (int i = 0; i < static_cast<int>(field.size()); i++)
     {
         print_n_char('*', field[i]);
-        printf("    (%d field, %d stones)\n", i + 1, field[i]);
+        printf_s("    (%d field, %d stones)\n", i + 1, field[i]);
     }
 }
 
 bool is_valid_value (const vector<int>& field, int row, int ammount)
 {
-    return row > 0 && row <= static_cast<int>(field.size()) &&
-           ammount <= field[row - 1] && ammount > 0;
+    return row > 0 && row <= static_cast<int>(field.size()) && ammount <= field[row - 1] && ammount > 0;
 }
 
 int handle_player_turn (vector<int>& field)
@@ -127,7 +126,7 @@ void game (const vector<int>& heaps_data)
     int current_turn = rand() % 2 ? player_turn : bot_turn;
     while (!game_is_end(field))
     {
-        print_game_condition(field, current_turn);
+        print_game_state(field, current_turn);
         if (current_turn == player_turn)
         {
             if (handle_player_turn(field) == 0)
@@ -170,13 +169,11 @@ void print_rules (void)
             "stones in it\n";
     cout << "- At every turn you(or your opponent) must take N stones from "
             "only one row\n";
-    cout
-        << "- N is a natural number in section [1; K] where K - ammount of "
-           "stones in target row\n";
+    cout << "- N is a natural number in section [1; K] where K - ammount of "
+            "stones in target row\n";
     cout << "- The person who took the last stone is a winner\n";
-    cout
-        << "- You should enter your turn in format L M where L - number of "
-           "a row, M - ammount of stones you take\n";
+    cout << "- You should enter your turn in format L M where L - number of "
+            "a row, M - ammount of stones you take\n";
     cout << "- You may quit the game at every moment by entering 0 0\n";
 }
 

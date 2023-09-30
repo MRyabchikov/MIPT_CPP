@@ -10,4 +10,7 @@ x+y * (y-x);
 let x = 6;
 let k 6;
 l - 12;
+let _l = 12;
+let name_with_under__score = 9;
+name_with_under__score - 9 * 7 + 123;
 q

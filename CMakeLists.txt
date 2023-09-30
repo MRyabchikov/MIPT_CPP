@@ -8,5 +8,5 @@ cmake_path(SET LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}./lib")
 
 include_directories (${LIB_DIR})
 
-#add_subdirectory("SeminarsWork/class5/calculator")
+add_subdirectory("SeminarsWork/class5/calculator")
 add_subdirectory("SeminarsWork/class6/vector")

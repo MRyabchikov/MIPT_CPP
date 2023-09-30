@@ -108,7 +108,19 @@ double declaration ()
 
     string var = t.name;
     if (is_declared(var))
-        throw runtime_error(var + " declared twice");
+    {
+        t = ts.get();
+        if (t.kind != '=')
+        {
+            throw runtime_error("'=' missing in declaration of " + var + ". Old value is setted");
+            return get_value(var);
+        }
+        else
+        {
+            set_value(var, expression());
+            return get_value(var);
+        }
+    }
     t = ts.get();
     if (t.kind != '=')
         throw runtime_error("'=' missing in declaration of " + var);

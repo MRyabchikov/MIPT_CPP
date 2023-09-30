@@ -23,6 +23,18 @@ Vector2d& operator-= (Vector2d& v1, const Vector2d& v2)
     return v1;
 }
 
+Vector2d operator* (const Vector2d& v, double x) { return Vector2d(v.getX() * x, v.getY() * x); }
+
+Vector2d operator* (double x, const Vector2d& v) { return v * x; }
+
+Vector2d& operator*= (Vector2d& v, double x)
+{
+    v = v * x;
+    return v;
+}
+
+double length (const Vector2d& v) { return sqrt(v.getX() * v.getX() + v.getY() * v.getY()); }
+
 ostream& operator<< (ostream& fout, const Vector2d& v1)
 {
     fout << v1.getX() << " " << v1.getY();
@@ -38,11 +50,11 @@ istream& operator>> (istream& fin, Vector2d& v1)
     return fin;
 }
 
-int main (void)
+// int main (void)
 
-{
-    Vector2d v1, v2;
-    cin >> v1 >> v2;
-    v1 -= v2;
-    cout << v1;
-}
+// {
+//     Vector2d v1, v2;
+//     cin >> v1 >> v2;
+//     (v1 -= v2) += v2;
+//     cout << v1;
+// }

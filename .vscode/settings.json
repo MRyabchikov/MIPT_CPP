@@ -4,7 +4,16 @@
     "editor.formatOnSave": true,
     "files.associations": {
         "iostream": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "atomic": "cpp",
+        "memory": "cpp",
+        "optional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "*.tcc": "cpp",
+        "memory_resource": "cpp",
+        "type_traits": "cpp"
     },
     "cmake.installPrefix": "${workspaceFolder}"
 }

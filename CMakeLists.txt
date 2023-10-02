@@ -10,3 +10,4 @@ include_directories (${LIB_DIR})
 
 add_subdirectory("SeminarsWork/class5/calculator")
 add_subdirectory("SeminarsWork/class6/vector")
+add_subdirectory("SeminarsWork/class6/logic_gate")

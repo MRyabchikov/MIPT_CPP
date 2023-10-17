@@ -5,25 +5,25 @@ namespace Graph_lib {
 
 struct Point
 {
-  int x, y;
+    int x, y;
 
-  Point() : x{0}, y{0} {}
+    Point() : x{0}, y{0} {}
 
-  constexpr Point(int xx, int yy) : x{xx}, y{yy} {}
+    constexpr Point(int xx, int yy) : x{xx}, y{yy} {}
 
-  Point& operator+= (Point d)
-  {
-    x += d.x;
-    y += d.y;
-    return *this;
-  }
+    Point& operator+= (Point d)
+    {
+        x += d.x;
+        y += d.y;
+        return *this;
+    }
 
-  Point& operator-= (Point d)
-  {
-    x -= d.x;
-    y -= d.y;
-    return *this;
-  }
+    Point& operator-= (Point d)
+    {
+        x -= d.x;
+        y -= d.y;
+        return *this;
+    }
 };
 
 inline Point operator+ (Point a, Point b) { return a += b; }

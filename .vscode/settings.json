@@ -50,7 +50,10 @@
         "numbers": "cpp",
         "sstream": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "list": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp"
     },
     "cmake.installPrefix": "${workspaceFolder}",
     "cmake.environment": {

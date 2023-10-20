@@ -34,4 +34,4 @@ let const (g+1) = 10;
 let const 10*g = 10;
 pi*pi - g;
 set g = 10; 
-q
+quit

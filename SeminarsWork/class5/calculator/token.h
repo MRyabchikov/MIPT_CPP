@@ -46,5 +46,6 @@ const string declkey = "let";
 const string setkey = "set";
 const string constkey = "const";
 const string helpkey = "help";
+const string quitkey = "quit";
 
 extern Token_stream ts;

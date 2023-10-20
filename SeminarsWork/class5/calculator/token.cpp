@@ -27,7 +27,6 @@ Token Token_stream::get()
 
     switch (ch)
     {
-    case quit:
     case interruption_key:
         return Token{quit};
     case '(':
@@ -80,6 +79,8 @@ Token Token_stream::get()
                 return Token{constant};
             if (s == helpkey)
                 return Token{help};
+            if (s == quitkey)
+                return Token{quit};
 
             return Token{name, s};
         }

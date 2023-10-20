@@ -20,6 +20,8 @@ void set_value (string s, double d)
     {
         if (var_table[i].name == s)
         {
+            if (var_table[i].is_const == true)
+                throw runtime_error("attempt to modify const value");
             var_table[i].value = d;
             return;
         }
@@ -37,12 +39,12 @@ bool is_declared (string s)
     return false;
 }
 
-double define_name (string var, double val)
+double define_name (string var, double val, bool is_const)
 {
     if (is_declared(var))
         throw runtime_error(var + " declared twice");
 
-    var_table.push_back(Variable{var, val});
+    var_table.push_back(Variable{var, val, is_const});
 
     return val;
 }

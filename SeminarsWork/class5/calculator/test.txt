@@ -27,4 +27,11 @@ set x 9;
 set (x+1) = 8;
 set x = 8*1-7-1;
 set x = x+1;
+set pi = 3.14;
+set e = 2.72;
+let const g = 9.81;
+let const (g+1) = 10;
+let const 10*g = 10;
+pi*pi - g;
+set g = 10; 
 q

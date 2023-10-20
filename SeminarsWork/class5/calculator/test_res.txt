@@ -27,4 +27,11 @@
 > = name expected in assignment of
 > = 0
 > = 1
+> = attempt to modify const value
+> = attempt to modify const value
+> = 9.81
+> = name expected in declaration
+> = name expected in declaration
+> = 0.0596044
+> = attempt to modify const value
 > 

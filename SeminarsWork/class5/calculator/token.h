@@ -35,10 +35,12 @@ constexpr char number = '8';
 constexpr char name = 'a';
 constexpr char let = 'L';
 constexpr char set = 'S';
+constexpr char constant = 'C';
 
 const string prompt = "> ";
 const string result = "= ";
 const string declkey = "let";
 const string setkey = "set";
+const string constkey = "const";
 
 extern Token_stream ts;

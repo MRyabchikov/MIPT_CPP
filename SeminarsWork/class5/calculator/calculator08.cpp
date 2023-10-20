@@ -103,6 +103,12 @@ double expression ()
 double declaration ()
 {
     Token t = ts.get();
+    bool is_const = false;
+    if (t.kind == constant)
+    {
+        is_const = true;
+        t = ts.get();
+    }
     if (t.kind != name)
         throw runtime_error("name expected in declaration");
 
@@ -115,7 +121,7 @@ double declaration ()
     if (t.kind != '=')
         throw runtime_error("'=' missing in declaration of " + var);
 
-    return define_name(var, expression());
+    return define_name(var, expression(), is_const);
 }
 
 double assignment ()
@@ -177,8 +183,8 @@ void calculate ()
 int main ()
 try
 {
-    define_name("pi", 3.141592653589793);
-    define_name("e", 2.718281828459045);
+    define_name("pi", 3.141592653589793, true);
+    define_name("e", 2.718281828459045, true);
 
     calculate();
 }

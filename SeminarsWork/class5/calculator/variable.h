@@ -7,8 +7,9 @@ struct Variable
 {
     string name;
     double value;
+    bool is_const = false;
 
-    Variable(string n, double v) : name{n}, value{v} {}
+    Variable(string n, double v, bool is_c = false) : name{n}, value{v}, is_const{is_c} {}
 };
 
 extern vector<Variable> var_table;
@@ -19,4 +20,4 @@ void set_value (string s, double d);
 
 bool is_declared (string s);
 
-double define_name (string var, double val);
+double define_name (string var, double val, bool is_const = false);

@@ -27,7 +27,7 @@ Token Token_stream::get()
 
     switch (ch)
     {
-    case interruption_key:
+    case interruption_key:  // Тоже относим к символам, требующим выхода из программы
         return Token{quit};
     case '(':
     case ')':
@@ -38,7 +38,7 @@ Token Token_stream::get()
     case '%':
     case ';':
     case '=':
-        return Token{ch};
+        return Token{ch};  // Эти символы представояют сами себя
 
     case '.':
     case '0':

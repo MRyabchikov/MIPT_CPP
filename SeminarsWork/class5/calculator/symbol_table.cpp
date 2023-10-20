@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-Symbol_table var_table;
+Symbol_table var_table;  // Здесь лежат все переменные нашего калькулятора
 
 double Symbol_table::get_value(string s)
 {

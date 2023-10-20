@@ -29,6 +29,7 @@ class Token_stream
     void ignore (char);
 };
 
+// Символы, изпользующиеся в качестве типов в Token
 constexpr char quit = 'q';
 constexpr char print = ';';
 constexpr char number = '8';
@@ -40,6 +41,7 @@ constexpr char space = 's';
 constexpr char help = 'h';
 constexpr int interruption_key = 0;
 
+// Ключевыке слова и спец-символы
 const string prompt = "> ";
 const string result = "= ";
 const string declkey = "let";

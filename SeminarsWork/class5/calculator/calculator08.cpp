@@ -1,11 +1,63 @@
+/*
+Простой калькулятор
+История версий :
+
+Доработан Михаилом Рябчиковов в октябре 2023 г.
+Переработан Бьярне Страуструпом в ма е 2007 г.
+Переработан Бьярне Страуструпом в августе 2006 г.
+Переработан Бьярне Страуструпом в августе 2004 г.
+Разработан Бьярне Страуструпом (bs@cs . tamu . edu) весной 2004 г.
+Эта программа реализует основные выражения калькулятора.
+Ввод о существляется из потока cin; вывод - в поток cout.
+
+Грамматика для ввода:
+
+Вычисление:
+    Инструкция
+    Вывод
+    Выход
+    Вычисление инструкция
+
+Инструкция:
+    Объявление
+    Присваивание
+    Выражение
+
+Объявление:
+    "let" [const] имя = "выражение"
+Присваивание:
+    "set" имя = "выражение"
+
+Выражение :
+    Терм
+    Выражение + Терм
+    Выражение - Терм
+Терм:
+    Первичное_выражение
+    Терм * Первичное_выражение
+    Терм / Первичное_выражение
+    Терм % Первичное_ выражение
+Первичное_выражение :
+    Число
+    (Выражение)
+    - Первичное_выражение
+    + Первичное_выражение
+Число :
+    Литерал_с_плавающей_ точкой
+
+Ввод из потока cin через Token s t ream с именем t s .
+*/
+
 #include "symbol_table.h"
 #include "token.h"
 #include <cmath>
 #include <iostream>
 using namespace std;
 
+// Объявлена тут во избежание перекрестных вызовов
 double expression ();
 
+// Обработка первичного выражение
 double primary ()
 {
     Token t = ts.get();
@@ -37,6 +89,7 @@ double primary ()
     }
 }
 
+// Обработка терма
 double term ()
 {
     double left = primary();
@@ -75,6 +128,7 @@ double term ()
     }
 }
 
+// Обработка выражения
 double expression ()
 {
     double left = term();
@@ -100,6 +154,7 @@ double expression ()
     }
 }
 
+// Обработка объявления
 double declaration ()
 {
     Token t = ts.get();
@@ -107,7 +162,7 @@ double declaration ()
     if (t.kind == constant)
     {
         is_const = true;
-        t = ts.get();
+        t = ts.get();  // В этом случае мы все еще не считали имя. Делаем это
     }
     if (t.kind != name)
         throw runtime_error("name expected in declaration");
@@ -124,6 +179,7 @@ double declaration ()
     return var_table.define_name(var, expression(), is_const);
 }
 
+// Обработка присваивания
 double assignment ()
 {
     Token t = ts.get();
@@ -141,6 +197,7 @@ double assignment ()
     return var_table.get_value(var);
 }
 
+// Обработка инструкции
 double statement ()
 {
     Token t = ts.get();
@@ -171,7 +228,7 @@ void print_help ()
          << "	input constants - let const name = value" << '\n'
          << "	assignment - set name = value" << '\n'
          << "existing variables:" << endl;
-    var_table.print_var_table();
+    var_table.print_var_table();  // Выводит все доступные переменные в формате имя: значение [- const]
 }
 
 void calculate ()

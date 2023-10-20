@@ -38,6 +38,7 @@ constexpr char set = 'S';
 constexpr char constant = 'C';
 constexpr char space = 's';
 constexpr char help = 'h';
+constexpr int interruption_key = 0;
 
 const string prompt = "> ";
 const string result = "= ";

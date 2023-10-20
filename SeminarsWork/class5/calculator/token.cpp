@@ -28,6 +28,7 @@ Token Token_stream::get()
     switch (ch)
     {
     case quit:
+    case interruption_key:
         return Token{quit};
     case '(':
     case ')':

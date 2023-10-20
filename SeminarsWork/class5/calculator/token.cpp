@@ -76,7 +76,9 @@ Token Token_stream::get()
             if (s == setkey)
                 return Token{set};
             if (s == constkey)
-                return Token(constant);
+                return Token{constant};
+            if (s == helpkey)
+                return Token{help};
 
             return Token{name, s};
         }

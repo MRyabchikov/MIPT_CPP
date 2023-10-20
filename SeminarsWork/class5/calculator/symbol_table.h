@@ -21,6 +21,7 @@ class Symbol_table
     void set_value (string s, double d);
     bool is_declared (string s);
     double define_name (string var, double val, bool is_const = false);
+    void print_var_table () const;
 
   private:
     vector<Variable> var_table;

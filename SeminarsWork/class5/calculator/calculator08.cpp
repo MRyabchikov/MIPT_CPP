@@ -158,6 +158,22 @@ double statement ()
 
 void clean_up_mess () { ts.ignore(print); }
 
+void print_help ()
+{
+    cout << "operations :" << '\n'
+         << "	addition A+B" << '\n'
+         << "	subtraction A-B" << '\n'
+         << "	multiplication A*B" << '\n'
+         << "	division A/B" << '\n'
+         << "	division with remainder A%B" << '\n'
+         << "variables:" << '\n'
+         << "	variable input - let name = value" << '\n'
+         << "	input constants - let const name = value" << '\n'
+         << "	assignment - set name = value" << '\n'
+         << "existing variables:" << endl;
+    var_table.print_var_table();
+}
+
 void calculate ()
 {
     while (true)
@@ -169,6 +185,11 @@ void calculate ()
                 t = ts.get();
             if (t.kind == quit)
                 return;
+            if (t.kind == help)
+            {
+                print_help();
+                continue;
+            }
 
             ts.putback(t);
             cout << result << statement() << endl;

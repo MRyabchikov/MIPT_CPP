@@ -48,3 +48,9 @@ double Symbol_table::define_name(string var, double val, bool is_const)
 
     return val;
 }
+
+void Symbol_table::print_var_table() const
+{
+    for (auto var : var_table)
+        cout << var.name << ": " << var.value << (var.is_const ? " - const\n" : "\n");
+}

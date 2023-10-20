@@ -5,5 +5,5 @@ add_executable(
                 ${TARGET}
                 calculator08.cpp
                 token.cpp
-                variable.cpp)
+                symbol_table.cpp)
 install(TARGETS ${TARGET})

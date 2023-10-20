@@ -1,5 +1,5 @@
+#include "symbol_table.h"
 #include "token.h"
-#include "variable.h"
 #include <cmath>
 #include <iostream>
 using namespace std;
@@ -29,7 +29,7 @@ double primary ()
         return t.value;
 
     case name:
-        return get_value(t.name);
+        return var_table.get_value(t.name);
 
     default:
 
@@ -113,7 +113,7 @@ double declaration ()
         throw runtime_error("name expected in declaration");
 
     string var = t.name;
-    if (is_declared(var))
+    if (var_table.is_declared(var))
     {
         throw runtime_error("Redeclaration of " + var);
     }
@@ -121,7 +121,7 @@ double declaration ()
     if (t.kind != '=')
         throw runtime_error("'=' missing in declaration of " + var);
 
-    return define_name(var, expression(), is_const);
+    return var_table.define_name(var, expression(), is_const);
 }
 
 double assignment ()
@@ -131,14 +131,14 @@ double assignment ()
         throw runtime_error("name expected in assignment of");
 
     string var = t.name;
-    if (!is_declared(var))
+    if (!var_table.is_declared(var))
         throw runtime_error("Undefined name " + var);
     t = ts.get();
     if (t.kind != '=')
         throw runtime_error("'=' missing in assigment to " + var);
 
-    set_value(var, expression());
-    return get_value(var);
+    var_table.set_value(var, expression());
+    return var_table.get_value(var);
 }
 
 double statement ()
@@ -183,8 +183,8 @@ void calculate ()
 int main ()
 try
 {
-    define_name("pi", 3.141592653589793, true);
-    define_name("e", 2.718281828459045, true);
+    var_table.define_name("pi", 3.141592653589793, true);
+    var_table.define_name("e", 2.718281828459045, true);
 
     calculate();
 }

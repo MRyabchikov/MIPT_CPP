@@ -36,6 +36,7 @@ constexpr char name = 'a';
 constexpr char let = 'L';
 constexpr char set = 'S';
 constexpr char constant = 'C';
+constexpr char space = 's';
 
 const string prompt = "> ";
 const string result = "= ";

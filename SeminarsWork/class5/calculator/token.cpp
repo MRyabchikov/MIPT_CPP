@@ -1,4 +1,5 @@
 #include "token.h"
+#include <cctype>
 #include <iostream>
 using namespace std;
 
@@ -58,6 +59,10 @@ Token Token_stream::get()
     }
 
     default:
+        if (isspace(ch))
+        {
+            return Token{space};
+        }
         if (isalpha(ch) || ch == '_')
         {
             string s;

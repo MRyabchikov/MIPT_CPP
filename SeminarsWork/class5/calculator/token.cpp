@@ -58,7 +58,7 @@ Token Token_stream::get()
     }
 
     default:
-        if (isalpha(ch))
+        if (isalpha(ch) || ch == '_')
         {
             string s;
             s += ch;

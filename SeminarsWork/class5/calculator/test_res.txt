@@ -7,8 +7,15 @@
 > = 56
 > = 0.1
 > = 0
-> = 3.1415
-> = > = 3.1415
-> = > = > = > = 9
+> = Redeclaration of x
+> = Redeclaration of x
+> = 8
+> = '=' missing in declaration of k
+> = get: undefined name l
+> = 12
+> = 9
 > = 69
+> = name expected in declaration
+> = 13
+> = 26
 > 

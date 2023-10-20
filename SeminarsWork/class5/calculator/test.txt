@@ -15,4 +15,7 @@ l - 12;
 let _l = 12;
 let name_with_under__score = 9;
 name_with_under__score - 9 * 7 + 123;
+let 15234_invalid_name = 13;
+let _12345_valid_name = 13;
+_12345_valid_name * 2;
 q

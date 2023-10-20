@@ -5,6 +5,9 @@ using namespace std;
 
 Token_stream ts;
 
+map<string, math_func> math_functions = {{"sin", sin},   {"cos", cos},   {"tan", tan},
+                                         {"asin", asin}, {"acos", acos}, {"atan", atan}};
+
 void Token_stream::putback(Token t)
 {
     if (full)
@@ -81,6 +84,9 @@ Token Token_stream::get()
                 return Token{help};
             if (s == quitkey)
                 return Token{quit};
+            for (auto it : math_functions)
+                if (it.first == s)
+                    return Token{math, it.second};
 
             return Token{name, s};
         }

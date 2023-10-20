@@ -34,4 +34,21 @@ let const (g+1) = 10;
 let const 10*g = 10;
 pi*pi - g;
 set g = 10; 
+sin(pi/2);
+asin(1);
+cos(pi/2);
+acos(1);
+tan(pi/2);
+atan(1);
+sin();
+sin(x);
+sin(x-1+pi/6);
+sin 1;
+sin(4);
+1 + tan(5) + cos(2);
+cos(cos(pi/2));
+let z = sin(asin(0.948721));
+jfjdsskdoe(30307)__!!!!      3+4;
+6    *      
+8 - sin(0) +        7*(0-4);
 quit

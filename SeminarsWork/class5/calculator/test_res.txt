@@ -34,4 +34,20 @@
 > = name expected in declaration
 > = 0.0596044
 > = attempt to modify const value
+> = 1
+> = 1.5708
+> = 6.12303e-17
+> = 0
+> = 1.63312e+16
+> = 0.785398
+> = primary expected
+> = 0.841471
+> = 0.5
+> = missing open paranthesis
+> = -0.756802
+> = -2.79666
+> = 1
+> = 0.948721
+> = get: undefined name jfjdsskdoe
+> = 20
 > 

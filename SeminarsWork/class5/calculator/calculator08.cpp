@@ -40,8 +40,11 @@
 Первичное_выражение :
     Число
     (Выражение)
+    Математическая функция
     - Первичное_выражение
     + Первичное_выражение
+Математическая функияЖ
+    "имя_функции"("выражение")
 Число :
     Литерал_с_плавающей_ точкой
 
@@ -57,12 +60,27 @@ using namespace std;
 // Объявлена тут во избежание перекрестных вызовов
 double expression ();
 
+// Обработка математической функции
+double mathematical_function (math_func f)
+{
+    Token t = ts.get();
+    if (t.kind != '(')
+        throw runtime_error("missing open paranthesis");
+    double x = expression();
+    t = ts.get();
+    if (t.kind != ')')
+        throw runtime_error("missing closing parenthesis");
+    return f(x);
+}
+
 // Обработка первичного выражение
 double primary ()
 {
     Token t = ts.get();
     switch (t.kind)
     {
+    case math:
+        return mathematical_function(t.function);
     case '(':
     {
         double d = expression();

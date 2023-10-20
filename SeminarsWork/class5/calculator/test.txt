@@ -18,4 +18,13 @@ name_with_under__score - 9 * 7 + 123;
 let 15234_invalid_name = 13;
 let _12345_valid_name = 13;
 _12345_valid_name * 2;
+set x=123;
+set x=78;
+set abcd9;
+set abcd 9;
+set abcd = 9;
+set x 9;
+set (x+1) = 8;
+set x = 8*1-7-1;
+set x = x+1;
 q

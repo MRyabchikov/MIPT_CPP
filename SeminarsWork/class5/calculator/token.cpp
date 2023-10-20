@@ -68,6 +68,8 @@ Token Token_stream::get()
 
             if (s == declkey)
                 return Token{let};
+            if (s == setkey)
+                return Token{set};
 
             return Token{name, s};
         }

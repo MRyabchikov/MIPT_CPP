@@ -118,11 +118,30 @@ double declaration ()
     return define_name(var, expression());
 }
 
+double assignment ()
+{
+    Token t = ts.get();
+    if (t.kind != name)
+        throw runtime_error("name expected in assignment of");
+
+    string var = t.name;
+    if (!is_declared(var))
+        throw runtime_error("Undefined name " + var);
+    t = ts.get();
+    if (t.kind != '=')
+        throw runtime_error("'=' missing in assigment to " + var);
+
+    set_value(var, expression());
+    return get_value(var);
+}
+
 double statement ()
 {
     Token t = ts.get();
     switch (t.kind)
     {
+    case set:
+        return assignment();
     case let:
         return declaration();
     default:

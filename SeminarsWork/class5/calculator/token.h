@@ -34,9 +34,11 @@ constexpr char print = ';';
 constexpr char number = '8';
 constexpr char name = 'a';
 constexpr char let = 'L';
+constexpr char set = 'S';
 
 const string prompt = "> ";
 const string result = "= ";
 const string declkey = "let";
+const string setkey = "set";
 
 extern Token_stream ts;

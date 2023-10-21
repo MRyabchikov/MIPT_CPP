@@ -1,17 +1,25 @@
 > = 8
 > = -3
 > = -4
+> = -4
+> = 2
 > = -5
+> = 2
+> = 0.166667
 > = 8
 > = 12
 > = 56
+> = get: undefined name x1
 > = 0.1
 > = 0
+> = -0
+> = -1
 > = Redeclaration of x
 > = Redeclaration of x
 > = 8
 > = '=' missing in declaration of k
 > = get: undefined name l
+> = name expected in declaration
 > = 12
 > = 9
 > = 69

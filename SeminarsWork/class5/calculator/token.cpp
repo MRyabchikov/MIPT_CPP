@@ -25,8 +25,14 @@ Token Token_stream::get()
         return buffer;
     }
 
-    char ch;
+    char ch = ' ';
     cin >> ch;
+    if (!cin)
+    {
+        cin.clear();
+        ignore(print);
+        throw runtime_error("Bad token");
+    }
 
     switch (ch)
     {
@@ -84,9 +90,14 @@ Token Token_stream::get()
                 return Token{help};
             if (s == quitkey)
                 return Token{quit};
-            for (auto it : math_functions)
-                if (it.first == s)
-                    return Token{math, it.second};
+            try
+            {
+                math_func target = math_functions.at(s);
+                return Token{math, target};
+            }
+            catch (out_of_range& e)
+            {
+            }
 
             return Token{name, s};
         }

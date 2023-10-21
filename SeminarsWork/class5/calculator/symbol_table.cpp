@@ -7,22 +7,22 @@ Symbol_table var_table;  // Здесь лежат все переменные н
 
 double Symbol_table::get_value(string s)
 {
-    for (int i = 0; i < int(var_table.size()); ++i)
-        if (var_table[i].name == s)
-            return var_table[i].value;
+    for (const auto& var : var_table)
+        if (var.name == s)
+            return var.value;
 
     throw runtime_error("get: undefined name " + s);
 }
 
 void Symbol_table::set_value(string s, double d)
 {
-    for (int i = 0; i <= int(var_table.size()); ++i)
+    for (auto& var : var_table)
     {
-        if (var_table[i].name == s)
+        if (var.name == s)
         {
-            if (var_table[i].is_const == true)
+            if (var.is_const == true)
                 throw runtime_error("attempt to modify const value");
-            var_table[i].value = d;
+            var.value = d;
             return;
         }
     }
@@ -32,8 +32,8 @@ void Symbol_table::set_value(string s, double d)
 
 bool Symbol_table::is_declared(string s)
 {
-    for (int i = 0; i < int(var_table.size()); ++i)
-        if (var_table[i].name == s)
+    for (const auto& var : var_table)
+        if (var.name == s)
             return true;
 
     return false;

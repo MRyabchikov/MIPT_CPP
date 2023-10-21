@@ -241,6 +241,13 @@ void print_help ()
          << "	multiplication A*B" << '\n'
          << "	division A/B" << '\n'
          << "	division with remainder A%B" << '\n'
+         << "functions: " << '\n'
+         << "    sin" << '\n'
+         << "    cos" << '\n'
+         << "    tan" << '\n'
+         << "    asin" << '\n'
+         << "    acos" << '\n'
+         << "    atan" << '\n'
          << "variables:" << '\n'
          << "	variable input - let name = value" << '\n'
          << "	input constants - let const name = value" << '\n'
@@ -267,7 +274,8 @@ void calculate ()
             }
 
             ts.putback(t);
-            cout << result << statement() << endl;
+            double res = statement();
+            cout << result << res << endl;
         }
         catch (runtime_error& e)
         {

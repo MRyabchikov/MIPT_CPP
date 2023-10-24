@@ -91,11 +91,5 @@ void draw_fibonacci_spiral (int w, int h, int n, double scaler)
 int main (void)
 {
     draw_fibonacci_spiral(1200, int(1220 * 0.72), 100, 1);
-    // Simple_window win(Point{100, 100}, 400, 400, "sem11");
-    // MyArc arc(Point{200, 200}, 100, 50, 0, 180);
-    // arc.set_fill_color(Color::red);
-    // arc.set_color(Color::blue);
-    // win.attach(arc);
-    // win.wait_for_button();
     return 0;
 }

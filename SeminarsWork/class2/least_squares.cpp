@@ -40,6 +40,6 @@ int main (void)
     double a, b;
     b = (average_xy - average_x * average_y) / (average_x_square - average_x * average_x);
     a = average_y - b * average_x;
-    cout << "a = " << a << ", b = " << b << endl;
+    cout << "a = " << b << ", b = " << a << endl;
     return 0;
 }

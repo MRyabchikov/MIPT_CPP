@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(TARGET "logic_gate")
+set(TARGET "least_squares")
 
 project(${TARGET} LANGUAGES CXX)
 
@@ -23,6 +23,7 @@ link_directories(
 add_executable(
     ${TARGET}
     main.cpp
+    least_squares.cpp
     ${LIB_DIR}/Graph_lib/Graph.cpp
     ${LIB_DIR}/Graph_lib/GUI.cpp
     ${LIB_DIR}/Graph_lib/Window.cpp

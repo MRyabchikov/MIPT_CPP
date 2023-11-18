@@ -11,8 +11,11 @@ using namespace std;
 
 using Graph_lib::Point;
 
-struct Cell : Graph_lib::Button
+class Checker;
+
+class Cell : public Graph_lib::Button
 {
+  public:
     enum Type
     {
         black,
@@ -35,9 +38,19 @@ struct Cell : Graph_lib::Button
 
     void attach (Graph_lib::Window& win) override;
 
-    static constexpr int size = 100;
+    bool has_checker () const { return check != nullptr; }
+
+    void attach_checker (Checker& c);
+
+    const Checker& get_checker () const;
+
+    Checker& detach_checker ();
+    Point center () const;
+
+    static constexpr int size = 80;
 
   private:
     Type type;
     void reset_color ();
+    Checker* check = nullptr;
 };

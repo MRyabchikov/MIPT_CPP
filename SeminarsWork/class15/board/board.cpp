@@ -61,3 +61,12 @@ Chessboard::Chessboard(Point xy) : MyWindow(xy, width, height, "Chessboard"), x_
     attach(x_labels);
     attach(y_labels);
 }
+
+Cell& Chessboard::at(char c, int n)
+{
+    n--;
+    c -= 'a';
+    if (n < 0 || n > N || c > N || c < 0)
+        throw runtime_error("Index error");
+    return cells[c * N + n];
+}

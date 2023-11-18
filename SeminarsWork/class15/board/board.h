@@ -24,13 +24,14 @@ class MyWindow : public Simple_window
     void quit ();
 };
 
-struct Chessboard : MyWindow
+class Chessboard : public MyWindow
 {
   public:
     Chessboard(Point xy);
-    static constexpr int N = 4;
+    static constexpr int N = 8;
     static constexpr int N_max = 8;
     static_assert(N <= N_max, "not allowed to create more than N_max * N_max fields");
+    Cell& at (char c, int n);
 
   private:
     static constexpr int margin = 30;
@@ -58,6 +59,10 @@ struct Chessboard : MyWindow
         }
         else
         {
+            if (selected->has_checker())
+            {
+                c.attach_checker(selected->detach_checker());  // Здесь можно сдеать move_figure
+            }
             selected->deactivate();
             if (&c == selected)
             {

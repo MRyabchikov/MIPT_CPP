@@ -25,6 +25,7 @@ add_executable(
     main.cpp
     board.cpp
     cell.cpp
+    checker.cpp
     ${LIB_DIR}/Graph_lib/Graph.cpp
     ${LIB_DIR}/Graph_lib/GUI.cpp
     ${LIB_DIR}/Graph_lib/Window.cpp

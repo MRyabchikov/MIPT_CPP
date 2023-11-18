@@ -6,6 +6,7 @@
 
 #include "board.h"
 #include "cell.h"
+#include "checker.h"
 #include <Graph_lib/Graph.h>
 #include <Graph_lib/Simple_window.h>
 using namespace Graph_lib;
@@ -23,6 +24,8 @@ int main (void)
     // win.wait_for_button();
     // win.wait_for_button();
     Chessboard board({100, 100});
+    Checker w(board, Checker::white);
+    board.at('a', 3).attach_checker(w);
     board.wait_for_button();
 
     return 0;

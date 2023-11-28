@@ -1,17 +1,23 @@
 #pragma once
+#include <initializer_list>
 #include <iostream>
 
 class Vector
 {
   public:
-    Vector(int s);
+    explicit Vector(int s);
     ~Vector();
+    Vector(std::initializer_list<double> lst);
+    Vector(const Vector& obj);
+    Vector(Vector&& a);
+    Vector& operator= (Vector&& obj);
+    Vector& operator= (const Vector& obj);
 
     int size () const { return sz; }
 
-    double get (int n) { return elem[n]; }
+    double& operator[] (int i) { return elem[i]; }
 
-    void set (int n, double value) { elem[n] = value; }
+    double operator[] (int i) const { return elem[i]; }
 
   private:
     int sz;

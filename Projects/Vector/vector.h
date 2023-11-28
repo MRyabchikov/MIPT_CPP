@@ -1,6 +1,7 @@
 #pragma once
 #include <initializer_list>
 #include <iostream>
+#include <tracer/tracer.h>
 
 class Vector
 {
@@ -13,11 +14,11 @@ class Vector
     Vector& operator= (Vector&& obj);
     Vector& operator= (const Vector& obj);
 
-    int size () const { return sz; }
+    int size () const;
 
-    double& operator[] (int i) { return elem[i]; }
+    double& operator[] (int i);
 
-    double operator[] (int i) const { return elem[i]; }
+    double operator[] (int i) const;
 
   private:
     int sz;

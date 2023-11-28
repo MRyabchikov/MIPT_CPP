@@ -1,25 +1,19 @@
 #include "vector.h"
 #include <iostream>
+#include <tracer/tracer.h>
 using namespace std;
+
+Vector init_vec () { return {1, 2, 3}; }
 
 int main (void)
 {
-    Vector v(3);
-    for (int i = 0; i < 3; i++)
-        v[i] = i + 1;
-    for (int i = 0; i < 3; i++)
-        cout << v[i] << " ";
-    cout << endl;
-    Vector v1{2, 4, 6};
-    for (int i = 0; i < 3; i++)
-        cout << v1[i] << " ";
-    cout << endl;
-    Vector v2{v1};
-    v2[1] = 5;
-    for (int i = 0; i < 3; i++)
-        cout << v1[i] << " ";
-    cout << endl;
-    for (int i = 0; i < 3; i++)
-        cout << v2[i] << " ";
+    Vector v1(3);
+    Vector v2{1, 2, 3};
+    const Vector v3{v2};
+    cout << v1.size() << endl;
+    cout << v1[0] << " " << v3[1] << endl;
+    v2 = v3;
+    v2 = init_vec();
+
     return 0;
 }

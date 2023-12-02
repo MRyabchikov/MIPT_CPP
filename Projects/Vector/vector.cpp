@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Vector::Vector(int size) : sz(size), elem(new double[size])
+Vector::Vector(int size = 0) : sz(size), elem(new double[size]), space(size)
 {
     TRACE_FUNC;
     for (int i = 0; i < sz; i++)
@@ -31,12 +31,21 @@ Vector::~Vector()
 
 Vector& Vector::operator= (const Vector& obj)
 {
-    TRACE_FUNC;
+    if (this == &obj)
+        return *this;
+    if (obj.sz <= space)
+    {
+        for (int i = 0; i < obj.sz; i++)
+            elem[i] = obj.elem[i];
+        sz = obj.sz;
+        return *this;
+    }
     double* p = new double[obj.sz];
-    copy(obj.elem, obj.elem + obj.sz, p);
+    for (int i = 0; i < obj.sz; i++)
+        p[i] = obj.elem[i];
     delete[] elem;
+    space = sz = obj.sz;
     elem = p;
-    sz = obj.sz;
     return *this;
 }
 
@@ -64,6 +73,8 @@ int Vector::size() const
     return sz;
 }
 
+int Vector::capacity() const { return space; }
+
 double& Vector::operator[] (int i)
 {
     TRACE_FUNC;
@@ -74,4 +85,33 @@ double Vector::operator[] (int i) const
 {
     TRACE_FUNC;
     return elem[i];
+}
+
+void Vector::reserve(int newalloc)
+{
+    if (newalloc <= space)
+        return;
+    double* p = new double[newalloc];
+    for (int i = 0; i < sz; i++)
+        p[i] = elem[i];
+    delete[] elem;
+    elem = p;
+    space = newalloc;
+}
+
+void Vector::resize(int new_size)
+{
+    reserve(new_size);
+    for (int i = sz; i < new_size; i++)
+        elem[i] = 0;
+    sz = new_size;
+}
+
+void Vector::push_back(double new_value)
+{
+    if (space == 0)
+        reserve(_initial_size);
+    else if (sz == space)
+        reserve(sz * 2);
+    elem[sz++] = new_value;
 }

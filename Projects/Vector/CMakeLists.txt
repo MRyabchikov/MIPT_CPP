@@ -7,5 +7,5 @@ add_executable(
                 vector.cpp
                 ${LIB_DIR}/tracer/tracer.cpp
                 )
-add_definitions(-DENABLE_TRACING)
+#add_definitions(-DENABLE_TRACING)
 install(TARGETS ${TARGET})

@@ -7,6 +7,7 @@ Vector init_vec () { return {1, 2, 3}; }
 
 int main (void)
 {
+    TRACE_FUNC;
     Vector v1(3);
     Vector v2{1, 2, 3};
     const Vector v3{v2};

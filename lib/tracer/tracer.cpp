@@ -18,7 +18,7 @@ string Tracer::indent() const
 {
     string s;
     for (int i = 0; i < Tracer::counter; i++)
-        s += ".  ";
+        s += "  .";
     return s;
 }
 

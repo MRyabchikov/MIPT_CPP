@@ -1,0 +1,32 @@
+IN --> main [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\main.cpp 10]
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 11]
+  .Out <--Vector
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 19]
+  .Out <--Vector
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 81]
+  .Out <--size
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 81]
+  .Out <--size
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 26]
+  .Out <--Vector
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 81]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 93]
+  .Out <--operator[]
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 99]
+  .Out <--operator[]
+  .IN --> operator= [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 40]
+  .Out <--operator=
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 19]
+  .Out <--Vector
+  .IN --> operator= [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 70]
+  .Out <--operator=
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 33]
+  .Out <--~Vector
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 33]
+  .Out <--~Vector
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 33]
+  .Out <--~Vector
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 33]
+  .Out <--~Vector
+Out <--main

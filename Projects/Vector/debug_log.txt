@@ -1,0 +1,80 @@
+IN --> main [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\main.cpp 17]
+  .IN --> Vector_Base [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.h 16]
+  .Out <--Vector_Base
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 21]
+  .Out <--Vector
+  .IN --> Vector_Base [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.h 16]
+  .Out <--Vector_Base
+  .IN --> Vector_Base [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.h 16]
+  .Out <--Vector_Base
+  .IN --> Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 21]
+  .Out <--Vector
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> push_back [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 131]
+  .  .IN --> reserve [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 104]
+  .  .  .IN --> Vector_Base [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.h 16]
+  .  .  .Out <--Vector_Base
+0 0 0 0 0 -1   .  .Out <--reserve
+  .Out <--push_back
+  .IN --> push_back [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 131]
+  .Out <--push_back
+  .IN --> push_back [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 131]
+  .Out <--push_back
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> operator[] [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 98]
+  .Out <--operator[]
+  .IN --> size [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 80]
+  .Out <--size
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 35]
+  .Out <--~Vector
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 35]
+  .Out <--~Vector
+  .IN --> ~Vector [C:\UniversityProgramming\MIPT\Term-1\C++\Projects\Vector\vector.cpp 35]
+  .Out <--~Vector
+Out <--main

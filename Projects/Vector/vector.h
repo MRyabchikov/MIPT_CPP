@@ -85,9 +85,6 @@ template <typename T, typename A> Vector<T, A>& Vector<T, A>::operator= (const V
         return *this;
     Vector_Base<T, A> b(this->alloc, obj.sz);
     uninitialized_copy(obj.elem, obj.elem + obj.sz, b.elem);
-    swap(this->elem, b.elem);
-    swap(this->sz, b.sz);
-    swap(this->space, b.space);
     for (int i = 0; i < b.sz; i++)
         b.alloc.destroy(&(b.elem[i]));
     return *this;
@@ -108,11 +105,15 @@ template <typename T, typename A> Vector<T, A>& Vector<T, A>::operator= (Vector&
 {
     TRACE_FUNC;
     Vector_Base<T, A> b(obj.alloc, obj.sz);
-    swap<Vector_Base<T, A>>(*this, b);
+    swap(this->elem, b.elem);
+    swap(this->sz, b.sz);
+    swap(this->space, b.space);
     for (int i = 0; i < b.sz; i++)
         b.alloc.destroy(&(b.elem[i]));
     Vector_Base<T, A> tmp(obj.alloc, 0);
-    swap<Vector_Base<T, A>>(obj, b);
+    swap(tmp.elem, obj.elem);
+    swap(tmp.space, obj.space);
+    swap(tmp.sz, obj.sz);
     for (int i = 0; i < tmp.sz; i++)
         tmp.alloc.destroy(&(tmp.elem[i]));
     return *this;

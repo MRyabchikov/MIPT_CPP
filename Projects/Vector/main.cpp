@@ -49,5 +49,13 @@ int main (void)
     {
         cout << "Blocked index error" << endl;
     }
+    Vector<int*> v7;
+    for (int j = 0; j < 100; j++)
+        v7.push_back(new int(j + 1));
+    cout << "Vector of pointers: ";
+    for (int i = 0; i < 100; i++)
+        cout << *v7[i] << " ";
+    cout << endl;
+
     return 0;
 }
